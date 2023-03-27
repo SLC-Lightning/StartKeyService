@@ -68,11 +68,7 @@ public class Script
 	/// <param name="engine">Link with SLAutomation process.</param>
 	public void Run(Engine engine)
 	{
-		ServiceController service = new ServiceController("InstallCert");
-		if ((service.Status.Equals(ServiceControllerStatus.Stopped)) ||
-		(service.Status.Equals(ServiceControllerStatus.StopPending)))
-		{
-			service.Start();
-		}
+		var valuex = System.Environment.GetEnvironmentVariable("SLC_EXTERNAL_DISPATCHER_KEY", EnvironmentVariableTarget.Machine);
+		engine.GenerateInformation("Value Found: " + valuex);
 	}
 }
